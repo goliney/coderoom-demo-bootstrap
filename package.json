@@ -1,0 +1,27 @@
+{
+  "name": "coderoom-demo-bootstrap",
+  "version": "1.0.0",
+  "description": "Demo for Coderoom with Bootstrap snippets",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "coderoom demo/ build/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/goliney/coderoom-demo-bootstrap.git"
+  },
+  "keywords": [
+    "coderoom",
+    "demo",
+    "bootstrap"
+  ],
+  "author": "Sergey Goliney <sergey@goliney.com> (http://goliney.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/goliney/coderoom-demo-bootstrap/issues"
+  },
+  "homepage": "https://github.com/goliney/coderoom-demo-bootstrap#readme",
+  "dependencies": {
+    "coderoom": "^0.2.1"
+  }
+}

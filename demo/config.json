@@ -1,0 +1,12 @@
+{
+  "title": "Bootstrap v3.3.6 - CSS",
+  "assets": [
+    "./projectFiles/vendor/bootstrap-*/**/*"
+  ],
+  "media": [
+    "./projectFiles/vendor/jquery-*.js",
+    "./projectFiles/vendor/bootstrap-*/css/bootstrap.css*",
+    "./projectFiles/vendor/bootstrap-*/js/bootstrap.js",
+    "./projectFiles/css/foo.css"
+  ]
+}
