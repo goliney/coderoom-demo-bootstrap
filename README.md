@@ -15,3 +15,11 @@ If coderoom is installed globally:
 ```sh
 coderoom demo/ build/
 ```
+
+Or via grunt:
+
+```sh
+npm install -g grunt
+npm install
+grunt
+```
