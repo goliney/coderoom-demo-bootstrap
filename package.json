@@ -23,5 +23,10 @@
   "homepage": "https://github.com/goliney/coderoom-demo-bootstrap#readme",
   "dependencies": {
     "coderoom": "^0.2.1"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-coderoom": "^0.1.0",
+    "grunt-contrib-watch": "^1.0.0"
   }
 }
