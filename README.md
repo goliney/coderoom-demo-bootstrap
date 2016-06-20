@@ -19,7 +19,7 @@ coderoom demo/ build/
 Or via grunt:
 
 ```sh
-npm install -g grunt
+npm install grunt-cli -g
 npm install
 grunt
 ```
