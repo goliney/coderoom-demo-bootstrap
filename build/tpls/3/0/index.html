@@ -10,145 +10,50 @@
     <link rel="apple-touch-icon" sizes="152x152" href="../../../static/favicons/apple-touch-icon-152x152.png">
     <link rel="apple-touch-icon" sizes="180x180" href="../../../static/favicons/apple-touch-icon-180x180.png">
     <link rel="shortcut icon" href="../../../static/favicons/favicon.ico">
+
+    <script>
+        var ROOT = {"title":"Bootstrap v3.3.6 - CSS","items":[{"title":"Typography","items":[{"title":"Headings","items":[]},{"title":"Body copy","items":[]},{"title":"Inline text elements","items":[]},{"title":"Alignment classes","items":[]},{"title":"Transformation classes","items":[]},{"title":"Abbreviations","items":[]},{"title":"Addresses","items":[]},{"title":"Blockquotes","items":[]},{"title":"Lists","items":[]}]},{"title":"Code","items":[]},{"title":"Tables","items":[{"title":"Basic example","items":[]},{"title":"Stripped rows","items":[]},{"title":"Bordered table","items":[]},{"title":"Hover rows","items":[]},{"title":"Condensed table","items":[]},{"title":"Contextual classes","items":[]},{"title":"Responsive tables","items":[]}]},{"title":"Forms","items":[{"title":"Basic example","items":[]},{"title":"Inline form","items":[]},{"title":"Horizontal form","items":[]},{"title":"Supported controls","items":[]},{"title":"Static control","items":[]},{"title":"States","items":[]},{"title":"Control sizing","items":[]}]},{"title":"Buttons","items":[{"title":"Button tags","items":[]},{"title":"Options","items":[]},{"title":"Sizes","items":[]},{"title":"States","items":[]}]},{"title":"Images","items":[]},{"title":"Helper classes","items":[{"title":"Contextual colors","items":[]},{"title":"Contextual backgrounds","items":[]}]}]};
+        var DEPTH = 4;
+    </script>
+
+    <script type="text/x-template" id="menu-item-tpl">
+        <li>
+            <a v-if="room.items.length === 0" class="link" :class="{active: isActive}" :href="getRoomUrl()">${room.title}</a>
+            <template v-else>
+                <div class="dir-name">${room.title}</div>
+                <ul>
+                    <menu-item v-for="item in room.items" :room="item" :path-to-parent="pathToRoom"></menu-item>
+                </ul>
+            </template>
+        </li>
+    </script>
 </head>
 <body>
     <!-- sidebar -->
-    <section id="sidebar">
+    <section id="sidebar" :class="{mounted: mounted}">
         <header>
             <a href="../../../index.html">Bootstrap v3.3.6 - CSS</a>
         </header>
         <ul id="menu">
-            <li class="search">
+            <li class="search" :class="{active: isSearchFocused || search.length > 0}">
                 <i class="fa fa-search"></i>
-                <input type="text" placeholder="Search...">
-                <button type="button" clear class="fa fa-remove" title="Clear search"></button>
+                <!-- search input -->
+                <input type="text"
+                   placeholder="Search..."
+                   v-model="search"
+                   @focus="isSearchFocused = true"
+                   @blur="isSearchFocused = false"
+                   ref="search" />
+                <!-- clear search button -->
+                <button type="button"
+                    class="fa fa-remove"
+                    title="Clear search"
+                    v-show="search.length > 0"
+                    @click="clearSearch()"></button>
             </li>
-            <li>
-                <div class="dir-name">Typography</div>
-                <ul>
-                    <li>
-                        <a class="link" href="../../../tpls/0/0/index.html">Headings</a>
-                    </li>
-                    <li>
-                        <a class="link" href="../../../tpls/0/1/index.html">Body copy</a>
-                    </li>
-                    <li>
-                        <a class="link" href="../../../tpls/0/2/index.html">Inline text elements</a>
-                    </li>
-                    <li>
-                        <a class="link" href="../../../tpls/0/3/index.html">Alignment classes</a>
-                    </li>
-                    <li>
-                        <a class="link" href="../../../tpls/0/4/index.html">Transformation classes</a>
-                    </li>
-                    <li>
-                        <a class="link" href="../../../tpls/0/5/index.html">Abbreviations</a>
-                    </li>
-                    <li>
-                        <a class="link" href="../../../tpls/0/6/index.html">Addresses</a>
-                    </li>
-                    <li>
-                        <a class="link" href="../../../tpls/0/7/index.html">Blockquotes</a>
-                    </li>
-                    <li>
-                        <a class="link" href="../../../tpls/0/8/index.html">Lists</a>
-                    </li>
-                    
-                </ul>
-            </li>
-            <li>
-                <a class="link" href="../../../tpls/1/index.html">Code</a>
-            </li>
-            <li>
-                <div class="dir-name">Tables</div>
-                <ul>
-                    <li>
-                        <a class="link" href="../../../tpls/2/0/index.html">Basic example</a>
-                    </li>
-                    <li>
-                        <a class="link" href="../../../tpls/2/1/index.html">Stripped rows</a>
-                    </li>
-                    <li>
-                        <a class="link" href="../../../tpls/2/2/index.html">Bordered table</a>
-                    </li>
-                    <li>
-                        <a class="link" href="../../../tpls/2/3/index.html">Hover rows</a>
-                    </li>
-                    <li>
-                        <a class="link" href="../../../tpls/2/4/index.html">Condensed table</a>
-                    </li>
-                    <li>
-                        <a class="link" href="../../../tpls/2/5/index.html">Contextual classes</a>
-                    </li>
-                    <li>
-                        <a class="link" href="../../../tpls/2/6/index.html">Responsive tables</a>
-                    </li>
-                    
-                </ul>
-            </li>
-            <li>
-                <div class="dir-name">Forms</div>
-                <ul>
-                    <li>
-                        <a class="link" href="../../../tpls/3/0/index.html">Basic example</a>
-                    </li>
-                    <li>
-                        <a class="link" href="../../../tpls/3/1/index.html">Inline form</a>
-                    </li>
-                    <li>
-                        <a class="link" href="../../../tpls/3/2/index.html">Horizontal form</a>
-                    </li>
-                    <li>
-                        <a class="link" href="../../../tpls/3/3/index.html">Supported controls</a>
-                    </li>
-                    <li>
-                        <a class="link" href="../../../tpls/3/4/index.html">Static control</a>
-                    </li>
-                    <li>
-                        <a class="link" href="../../../tpls/3/5/index.html">States</a>
-                    </li>
-                    <li>
-                        <a class="link" href="../../../tpls/3/6/index.html">Control sizing</a>
-                    </li>
-                    
-                </ul>
-            </li>
-            <li>
-                <div class="dir-name">Buttons</div>
-                <ul>
-                    <li>
-                        <a class="link" href="../../../tpls/4/0/index.html">Button tags</a>
-                    </li>
-                    <li>
-                        <a class="link" href="../../../tpls/4/1/index.html">Options</a>
-                    </li>
-                    <li>
-                        <a class="link" href="../../../tpls/4/2/index.html">Sizes</a>
-                    </li>
-                    <li>
-                        <a class="link" href="../../../tpls/4/3/index.html">States</a>
-                    </li>
-                    
-                </ul>
-            </li>
-            <li>
-                <a class="link" href="../../../tpls/5/index.html">Images</a>
-            </li>
-            <li>
-                <div class="dir-name">Helper classes</div>
-                <ul>
-                    <li>
-                        <a class="link" href="../../../tpls/6/0/index.html">Contextual colors</a>
-                    </li>
-                    <li>
-                        <a class="link" href="../../../tpls/6/1/index.html">Contextual backgrounds</a>
-                    </li>
-                    
-                </ul>
-            </li>
-            
+            <menu-item v-for="item in filteredItems" :room="item"></menu-item>
         </ul>
-        <div no-items-label>No results found.</div>
+        <div class="no-items-label" v-if="filteredItems.length === 0">No results found.</div>
     </section>
     <!-- /sidebar -->
 
@@ -250,6 +155,7 @@
     <script src="../../../static/js/vendor/ace/ace.js" type="text/javascript" charset="utf-8"></script>
     <script src="../../../static/js/vendor/ace/mode-html.js" type="text/javascript" charset="utf-8"></script>
     <script src="../../../static/js/vendor/jquery-2.2.3.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../static/js/vendor/vue-2.2.0.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="../../../static/js/base.js" type="text/javascript" charset="utf-8"></script>
     <script src="../../../static/js/editor.js" type="text/javascript" charset="utf-8"></script>
     <script src="../../../static/js/search.js" type="text/javascript" charset="utf-8"></script>
